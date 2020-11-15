@@ -1,58 +1,17 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from "@angular/fire/auth";
 import { Router } from "@angular/router";
-import { AngularFirestore } from "@angular/fire/firestore";
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
-//import {auth} from 'firebase'
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private AFauth : AngularFireAuth, private router : Router, private db : AngularFirestore, private _google:GooglePlus) { }
-
-  login(email:string, password:string){
-
-    return new Promise((resolve, rejected) =>{
-      this.AFauth.auth.signInWithEmailAndPassword(email, password).then(user => {
-        resolve(user);
-      }).catch(err => rejected(err));
-    });
-
-   
-  }
-
-  logout(){
-    this.AFauth.auth.signOut().then(() => {
-      this.router.navigate(['/login']);
-    })
-  }
-
-  register(email : string, password : string, name : string){
-
-    return new Promise ((resolve, reject) => {
-      this.AFauth.auth.createUserWithEmailAndPassword(email, password).then( res =>{
-          // console.log(res.user.uid);
-        const uid = res.user.uid;
-          this.db.collection('users').doc(uid).set({
-            name : name,
-            uid : uid
-          })
-        
-        resolve(res)
-      }).catch( err => reject(err))
-    })
-    
-
-  }
-
+  constructor(private router : Router, private _google:GooglePlus) { }
   loginWithGoogle(){
-    return this._google.login({})
+    return this._google.login({'webClientId': '1003353693226-5p1okcfq6r6ivp1oe99o8o7omfcvu41m.apps.googleusercontent.com'})
     .then((res)=>{
       const user_data_google = res.idToken;
-      //return this.AFauth.auth.signInWithCredential(auth.GoogleAuthProvider.credential(null,user_data_google.accessToken))
-      //return GoogleAuthProvider.credential(null,user_data_google.accessToken)
       return user_data_google;      
     })
   }
