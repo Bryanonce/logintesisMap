@@ -1,28 +1,3 @@
-/*.icon {
-    max-width: 32vh;
-    display: block;
-    margin: 0 auto;
-}
-
-ion-input,
-ion-item {
-    --background: transparent;
-}
-
-ion-content {
-    --background: aliceblue;
-}
-
-.text-danger {
-    color: #cf3c4f;
-}
-
-.areatexto {
-    width: 200px;
-    height: 200px;
-}
-*/
-
 body {
     font-family: 'Open Sans', sans-serif;
     background: #1894D4;
@@ -46,6 +21,7 @@ body {
             text-align: center;
         }
         .formula {
+            font-weight: 800;
             margin: auto;
             width: 200px;
             text-align: left;

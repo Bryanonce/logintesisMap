@@ -13,6 +13,8 @@ import { AppRoutingModule } from './app-routing.module';
 //Servicios
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import { HttpClientModule } from '@angular/common/http';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,HttpClientModule
   ],
   providers: [
+    Geolocation,
     GooglePlus,
     StatusBar,
     SplashScreen,

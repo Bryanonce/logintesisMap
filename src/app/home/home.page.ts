@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePage implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
+  }
+
+  goMap(){
+    this.router.navigate(['/mapa']);
+  }
+  goDanger(){
+    this.router.navigate(['/peligro']);
+  }
+  goRender(){
+    this.router.navigate(['/render']);
   }
 
 }

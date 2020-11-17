@@ -1,9 +1,25 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>home</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>Opciones de la App</ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-<p>Bienvenido a tu dashboard</p>
+<ion-content class="ion-padding fondo">
+    <ion-row>
+        <ion-col>
+            <ion-button (click)="goRender()" class="botHome">
+                <ion-img src="assets/ubicacion.svg"></ion-img>
+            </ion-button>
+        </ion-col>
+        <ion-col>
+            <ion-button (click)="goDanger()" class="botHome">
+                <ion-img src="assets/ojo.svg"></ion-img>
+            </ion-button>
+        </ion-col>
+    </ion-row>
+    <ion-row class="principal">
+        <ion-button class="botHome" (click)="goMap()">
+            <ion-img src="assets/enchufe.svg"></ion-img>
+        </ion-button>
+    </ion-row>
 </ion-content>

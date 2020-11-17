@@ -9,14 +9,14 @@
             <label for="pass">PASSWORD</label><br>
             <input type="password" name="pass" placeholder="Ingrese Contraseña">
         </div>
+        <br>
+        <ion-button>Sig In</ion-button>
+        <ion-button>Sig Up</ion-button>
         <br><br>
-        <ion-row>
-            <ion-col>
-                <ion-button color="red" class="googleBoton" (click)="loginGoogle()">Google+</ion-button>
-            </ion-col>
-
-        </ion-row>
-        <br><br><textarea readonly style="width:200px;height: 200px;">{{tokenApirest|json}}</textarea>
-
+        <ion-button color="#de4b38" class="googleBoton" (click)="loginGoogle()">
+            <img class="imagGo" src="./assets/plusg.svg" alt="Icono Google+"> &nbsp;&nbsp;
+            <p>Ingresar con Google</p>
+        </ion-button>
     </div>
+
 </body>
