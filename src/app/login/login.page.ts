@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IonicStorageModule } from '@ionic/storage';
+
 //Modelos
 import { ObservablePost } from '../models/observable.model';
 
 //Servicios
 import { ServiceApiRestService } from '../services/service-api-rest.service';
 import { AuthService } from '../services/auth.service';
-import { storage } from 'firebase';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-login',
@@ -20,12 +20,22 @@ export class LoginPage implements OnInit {
   password: string;
   //public tokenApirest:any;
 
-  constructor(private storage: Storage, private authService: AuthService, public router: Router,private _serverRest:ServiceApiRestService) { }
+  constructor(private storage: Storage, private authService: AuthService, public router: Router,private _serverRest:ServiceApiRestService) { 
+    storage.ready().then(()=>{
+      if(this.storage.get('googleAuth')){
+        this.storage.get('googleAuth')
+      .then((response) =>{
+        if(response == 'true'){
+          this.loginGoogle();
+        }
+      })
+      }
+      return
+    })
+  }
 
   ngOnInit() {
-    if(this.storage.get('googleAuth')==true){
-      this.loginGoogle();
-    }
+    
   }
 
   loginGoogle(){
@@ -35,7 +45,7 @@ export class LoginPage implements OnInit {
       this._serverRest.loginRestGoogle(response).subscribe((obs:ObservablePost)=>{
         if(obs.ok==true){
           this.router.navigate(['/home']);
-          this.storage.set('googleAuth',true)
+          this.storage.set('googleAuth','true')
         }
         //this.tokenApirest = obs;
       })

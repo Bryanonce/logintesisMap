@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <string name="app_name">loginmap</string>
-    <string name="title_activity_main">loginmap</string>
-    <string name="package_name">com.robot.solar</string>
-    <string name="custom_url_scheme">com.robot.solar</string>
-</resources>
